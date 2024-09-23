@@ -41,10 +41,10 @@ Acceptance Criteria:
     - If any required field is missing, the student should see an error message and the record should not be saved.
 
 
->  [!IMPORTANT] There are key assumptions made before the following instructions are meaningful:
->  1. You have a Ruby on Rails application created inside a Docker container.
->  2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
->  3. You have a terminal which has been attached to the docker container running the server. Hint: Use the `docker attach` command followed by the name or ID of the running container.
+>>  [!IMPORTANT] There are key assumptions made before the following instructions are meaningful:
+>>  1. You have a Ruby on Rails application created inside a Docker container.
+>>  2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
+>>  3. You have a terminal which has been attached to the docker container running the server. Hint: Use the `docker attach` command followed by the name or ID of the running container.
 
 ## Scaffold
 Part of the draw of using a web application framework like Ruby on Rails is the amount of overhead work that is taken on by the framework, meaning a developer has to do less work to set up a web app with an expected style. In order to create the necessary backend files run the following command within:
@@ -66,6 +66,7 @@ As stated this applies the structural changes implied by the `generate scaffold`
 After running these commands, look at the folders app/controllers and app/models. These folders now contain files called students_controller.rb and student.rb respectively. They should look like the following:
 
 app/controllers/called students_controller.rb:
+
         ```ruby
         class StudentsController < ApplicationController
         before_action :set_student, only: %i[ show edit update destroy ]
@@ -87,6 +88,7 @@ app/controllers/called students_controller.rb:
         ```
 
 app/models/student.rb
+
 	```ruby
 	class Student < ApplicationRecord
 	end
@@ -94,16 +96,17 @@ app/models/student.rb
 
 
 Inside app/views there is a folder called students, which contains several files all related to how students which are stored in the database are rendered in the browser. These files are the generated output of the first command we ran, and are the basis of how the database tracks information about users and displays them in the browser. Here is list of all files which should be in the app/views folder:
+
 		```
-		edit.html.erb,\n
-		index.html.erb,\n
-		index.json.jbuilder,\n
-		new.html.erb,\n
-		show.html.erb,\n
-		show.json.jbuilder,\n
-		_form.html.erb,\n
-		_student.html.erb,\n
-		_student.json.jbuilder,\n
+		edit.html.erb
+		index.html.erb
+		index.json.jbuilder
+		new.html.erb
+		show.html.erb
+		show.json.jbuilder
+		_form.html.erb
+		_student.html.erb
+		_student.json.jbuilder
 		```
 
 ## Server Startup
