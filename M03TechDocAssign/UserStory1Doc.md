@@ -1,4 +1,4 @@
-# TODO: Title
+# Documentation for User Story 1: Create a Student
 
 # Contents
 
@@ -18,19 +18,19 @@
 A few things to ought be explained before diving to the material at hand.
 
 ### User Stories
-    A User Story is a semi-structured way for Developers and End users to communicated clearly and effecively what software should allow a user to be able to do. They often follow the format of "As a ..., I want..., So that...." This format specifies what sort of user is seeking functionality, what the task they need to complete is, and what end the task has. These three features are important to keep in mind as they define what the software needs to do, who needs those tasks done, and what the point is. (If there is no meaningful benefit to a feature, there is no need to implement it).
+ A User Story is a semi-structured way for Developers and End users to communicated clearly and effecively what software should allow a user to be able to do. They often follow the format of "As a ..., I want..., So that...." This format specifies what sort of user is seeking functionality, what the task they need to complete is, and what end the task has. These three features are important to keep in mind as they define what the software needs to do, who needs those tasks done, and what the point is. (If there is no meaningful benefit to a feature, there is no need to implement it).
     
-### Relational Databases 
-    A Relational Database, for the purposes of this web app, is a collection of tables with columns which specify the types and names information being stored and rows which store instances of information. Different tables have distinct uses and can have references between themselves or to other data storage, like Active Storage for images.
+### Relational Databases
+ A Relational Database, for the purposes of this web app, is a collection of tables with columns which specify the types and names information being stored and rows which store instances of information. Different tables have distinct uses and can have references between themselves or to other data storage, like Active Storage for images.
     
 ### Rails  
-    Rails is a Web Application framework that handles a lot of the complex tasks involved with building web applications, including creating user interfaces and connecting to a database. The commands to do so will be covered below.
+ Rails is a Web Application framework that handles a lot of the complex tasks involved with building web applications, including creating user interfaces and connecting to a database. The commands to do so will be covered below.
 
 ### The MVC Framework
-    While there are a few ways to represent data in a database and browser, Rails and many other platforms use the MVC or Model-View-Controller Framework. Briefly, the View describes how data associated with an object should be displayed, the Model describes the data being stored, and the Controller mediates bewteen the View and Model.
+ While there are a few ways to represent data in a database and browser, Rails and many other platforms use the MVC or Model-View-Controller Framework. Briefly, the View describes how data associated with an object should be displayed, the Model describes the data being stored, and the Controller mediates bewteen the View and Model.
     
 ### The Project At Hand
-    The aim of this web application is to build a system to allow students to create accounts, store their details within a backend database, and be able to view their own and other student's details from a browser. More requirements will be added in future user stories, see the documentation therefore.
+ The aim of this web application is to build a system to allow students to create accounts, store their details within a backend database, and be able to view their own and other student's details from a browser. More requirements will be added in future user stories, see the documentation therefore.
 
 ### User Story 1: Create a Student
 As a student, I want to create a profile with my basic information, So that I can manage my personal details in the system.
@@ -41,10 +41,10 @@ Acceptance Criteria:
     - If any required field is missing, the student should see an error message and the record should not be saved.
 
 
-> [!IMPORTANT] There are key assumptions made before the following instructions are meaningful:
-> 1. You have a Ruby on Rails application created inside a Docker container.
-> 2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
-> 3. You have a terminal which has been attached to the docker container running the server. Hint: Use the `docker attach` command followed by the name or ID of the running container.
+>  [!IMPORTANT] There are key assumptions made before the following instructions are meaningful:
+>  1. You have a Ruby on Rails application created inside a Docker container.
+>  2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
+>  3. You have a terminal which has been attached to the docker container running the server. Hint: Use the `docker attach` command followed by the name or ID of the running container.
 
 ## Scaffold
 Part of the draw of using a web application framework like Ruby on Rails is the amount of overhead work that is taken on by the framework, meaning a developer has to do less work to set up a web app with an expected style. In order to create the necessary backend files run the following command within:
@@ -65,7 +65,7 @@ In order to do this, within the `portfolio_app` folder of your container, via th
 As stated this applies the structural changes implied by the `generate scaffold` command run previously.
 After running these commands, look at the folders app/controllers and app/models. These folders now contain files called students_controller.rb and student.rb respectively. They should look like the following:
 
-	app/controllers/called students_controller.rb:
+app/controllers/called students_controller.rb:
         ```ruby
         class StudentsController < ApplicationController
         before_action :set_student, only: %i[ show edit update destroy ]
@@ -86,25 +86,24 @@ After running these commands, look at the folders app/controllers and app/models
         #File continues, but is truncated here.
         ```
 
-	app/models/student.rb
-		```ruby
-		class Student < ApplicationRecord
-		end
-		```
+app/models/student.rb
+	```ruby
+	class Student < ApplicationRecord
+	end
+	```
 
 
 Inside app/views there is a folder called students, which contains several files all related to how students which are stored in the database are rendered in the browser. These files are the generated output of the first command we ran, and are the basis of how the database tracks information about users and displays them in the browser. Here is list of all files which should be in the app/views folder:
 		```
-		edit.html.erb
-		index.html.erb
-		index.json.jbuilder
-		list.txt
-		new.html.erb
-		show.html.erb
-		show.json.jbuilder
-		_form.html.erb
-		_student.html.erb
-		_student.json.jbuilder
+		edit.html.erb,\n
+		index.html.erb,\n
+		index.json.jbuilder,\n
+		new.html.erb,\n
+		show.html.erb,\n
+		show.json.jbuilder,\n
+		_form.html.erb,\n
+		_student.html.erb,\n
+		_student.json.jbuilder,\n
 		```
 
 ## Server Startup
