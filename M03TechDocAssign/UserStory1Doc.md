@@ -3,12 +3,6 @@
 # Contents
 
 1. Introduction
-    1.1. User Stories
-    1.2. Relational Databases
-    1.3. Rails
-    1.4. The MVC Framework
-    1.5. The Project At Hand
-    1.6. User Story 1
 2. Scaffold
 3. Migration
 4. Server Startup
@@ -17,111 +11,106 @@
 ## Introduction
 A few things to ought be explained before diving to the material at hand.
 
-### User Stories
- A User Story is a semi-structured way for Developers and End users to communicated clearly and effecively what software should allow a user to be able to do. They often follow the format of "As a ..., I want..., So that...." This format specifies what sort of user is seeking functionality, what the task they need to complete is, and what end the task has. These three features are important to keep in mind as they define what the software needs to do, who needs those tasks done, and what the point is. (If there is no meaningful benefit to a feature, there is no need to implement it).
+1. **User Stories**: A User Story is a semi-structured way for Developers and End users to communicated clearly and effectively what software should allow a user to be able to do. They often follow the format of "As a ..., I want..., So that...." This format specifies what sort of user is seeking functionality, what the task they need to complete is, and what end the task has. These three features are important to keep in mind as they define what the software needs to do, who needs those tasks done, and what the point is. (If there is no meaningful benefit to a feature, there is no need to implement it).
     
-### Relational Databases
- A Relational Database, for the purposes of this web app, is a collection of tables with columns which specify the types and names information being stored and rows which store instances of information. Different tables have distinct uses and can have references between themselves or to other data storage, like Active Storage for images.
+2. **Relational Databases**: A Relational Database, for the purposes of this web app, is a collection of tables with columns which specify the types and names information being stored and rows which store instances of information. Different tables have distinct uses and can have references between themselves or to other data storage, like Active Storage for images.
     
-### Rails  
- Rails is a Web Application framework that handles a lot of the complex tasks involved with building web applications, including creating user interfaces and connecting to a database. The commands to do so will be covered below.
+3. **Rails**: Rails is a Web Application framework that handles a lot of the complex tasks involved with building web applications, including creating user interfaces and connecting to a database. The commands to do so will be covered below.
 
-### The MVC Framework
- While there are a few ways to represent data in a database and browser, Rails and many other platforms use the MVC or Model-View-Controller Framework. Briefly, the View describes how data associated with an object should be displayed, the Model describes the data being stored, and the Controller mediates bewteen the View and Model.
+4. **The MVC Framework**: While there are a few ways to represent data in a database and browser, Rails and many other platforms use the MVC or Model-View-Controller Framework. Briefly, the View describes how data associated with an object should be displayed, the Model describes the data being stored, and the Controller mediates between the View and Model.
     
-### The Project At Hand
- The aim of this web application is to build a system to allow students to create accounts, store their details within a backend database, and be able to view their own and other student's details from a browser. More requirements will be added in future user stories, see the documentation therefore.
+5. **The Project At Hand**: The aim of this web application is to build a system to allow students to create accounts, store their details within a backend database, and be able to view their own and other student's details from a browser. More requirements will be added in future user stories, see the documentation therefor.
 
-### User Story 1: Create a Student
-As a student, I want to create a profile with my basic information, So that I can manage my personal details in the system.
+6. **User Story 1: Create a Student**: As a student, I want to create a profile with my basic information, So that I can manage my personal details in the system.
 
-Acceptance Criteria:
+    Acceptance Criteria:
     - The system should allow the creation of a student with the following fields: first name, last name, school email, major, and expected graduation date.
     - All fields are required
     - If any required field is missing, the student should see an error message and the record should not be saved.
 
 
->>  [!IMPORTANT] There are key assumptions made before the following instructions are meaningful:
->>  1. You have a Ruby on Rails application created inside a Docker container.
->>  2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
->>  3. You have a terminal which has been attached to the docker container running the server. Hint: Use the `docker attach` command followed by the name or ID of the running container.
+> [!IMPORTANT]
+>    There are key assumptions made before the following instructions are meaningful:
+> 1. You have a Ruby on Rails application created inside a Docker container.
+> 2. You have a text editor or IDE which can view and edit the files associated with the application to be developed, which is called portfolio_app.
+> 3. You have a terminal which has been attached to the docker container running the server. Hint: Use the docker attach command followed by the name or ID of the running container.
 
 ## Scaffold
-Part of the draw of using a web application framework like Ruby on Rails is the amount of overhead work that is taken on by the framework, meaning a developer has to do less work to set up a web app with an expected style. In order to create the necessary backend files run the following command within:
+Part of the draw of using a web application framework like Ruby on Rails is the amount of overhead work that is taken on by the framework, meaning a developer must do less work to set up a web app with an expected style. In order to create the necessary backend files run the following command within the `workspace/portfolio_app#` terminal:
 
-    `rails generate scaffold Student first_name:string last_name:string school_email:string major:string graduation_date:date`
+`rails generate scaffold Student first_name:string last_name:string school_email:string major:string graduation_date:date`
 
-This is quite long and deserves an explaination. The token `rails` indicates to the workspace that a rails command is being issued. The token `generate` specifies that an automated task should begin. The token `scaffold` indicates that all files necessary to fulfill the MVC framework that the rest of Rails is designed to operate on. The token `Student` defines the name that the new Model is to have (and as far as I am aware is not case sensitive). The remaining tokens each have the same structure, a term followed by a colon, followed by either `string` or `date`. Each term defines a column in the database that will be generated by the command, and a section of the View that displays that information about a student on screen. After the :, the word `string` indicates the expected information is a `string` (to be stored as such and to provide text entry to users), where as the `date` keyword presents users with a special text entry and calender date picker and stores the selected date in a standardized format within the database.
+This is quite long and deserves an explanation. The token `rails` indicates to the workspace that a rails command is being issued. The token `generate` specifies that an automated task should begin. The token `scaffold` indicates that all files necessary to fulfill the MVC framework that the rest of Rails is designed to operate on should be created. The token `Student` defines the name that the new Model is to have (and as far as I am aware is not case sensitive). The remaining tokens each have the same structure, a term followed by a colon, followed by either `string` or `date`. Each term defines a column in the database that will be generated by the command, and a section of the View that displays that information about a student on screen. After the `:`, the word `string` indicates the expected information is a `string` (to be stored as such and to provide text entry to users). Whereas, the `date` keyword presents users with a special text entry and calender date picker and stores the selected date in a standardized format within the database.
 
 ## Migration
-Now that we have set up the MVC of our students, we need to Migrate this change. In databases migrating changes describes confirming (at least for now) the changes to the structure of the database, namely the tables and columns of tables, that set up in Scaffold. Migrations are distinct from Transactions, which describe changes to the database which add or remove rows to tables, though this is not the focus of the class or project.
+Now that we have set up the MVC of our students, we need to Migrate this change. Within the world of databases, migrating changes describes confirming (at least for now) the changes to the structure of the database, namely the tables and columns of tables, that were set up by the rails scaffold command. Migrations are distinct from Transactions, which describe changes to the database which add or remove rows to tables, though this is not the focus of the class or project.
 
     TODO Link the word Scaffold back to the top of the Scaffold Section.
 
 In order to do this, within the `portfolio_app` folder of your container, via the terminal run the following command:
 
-    `rails db:migrate`
+`rails db:migrate`
 
-As stated this applies the structural changes implied by the `generate scaffold` command run previously.
-After running these commands, look at the folders app/controllers and app/models. These folders now contain files called students_controller.rb and student.rb respectively. They should look like the following:
+As stated, this applies the structural changes implied by the `generate scaffold` command run previously.
+After running these commands, look at the folders app/controllers and app/models through your IDE or filesystem. These folders now contain files called students_controller.rb and student.rb respectively. They should look like the following:
 
-app/controllers/called students_controller.rb:
+app/controllers/students_controller.rb:
 
-        ```ruby
-        class StudentsController < ApplicationController
-        before_action :set_student, only: %i[ show edit update destroy ]
+```ruby
+class StudentsController < ApplicationController
+before_action :set_student, only: %i[ show edit update destroy ]
 
-        # GET /students or /students.json
-        def index
-                @students = Student.all
-        end
+# GET /students or /students.json
+def index
+	@students = Student.all
+end
 
-        # GET /students/1 or /students/1.json
-        def show
-        end
+# GET /students/1 or /students/1.json
+def show
+end
 
-        # GET /students/new
-        def new
-                @student = Student.new
-        end
-        #File continues, but is truncated here.
-        ```
+# GET /students/new
+def new
+	@student = Student.new
+end
+#File continues but is truncated here.
+```
 
 app/models/student.rb
 
-	```ruby
-	class Student < ApplicationRecord
-	end
-	```
+```ruby
+class Student < ApplicationRecord
+end
+```
 
 
-Inside app/views there is a folder called students, which contains several files all related to how students which are stored in the database are rendered in the browser. These files are the generated output of the first command we ran, and are the basis of how the database tracks information about users and displays them in the browser. Here is list of all files which should be in the app/views folder:
+Inside app/views there is a folder called students, which contains several files all related to how students, whose information are stored in the database, are rendered in the browser. These files are the generated output of the first command we ran and are the basis of how the database tracks information about users and displays them in the browser. Here is list of all files which should be in the app/views folder:
 
-		```
-		edit.html.erb
-		index.html.erb
-		index.json.jbuilder
-		new.html.erb
-		show.html.erb
-		show.json.jbuilder
-		_form.html.erb
-		_student.html.erb
-		_student.json.jbuilder
-		```
+```
+edit.html.erb
+index.html.erb
+index.json.jbuilder
+new.html.erb
+show.html.erb
+show.json.jbuilder
+_form.html.erb
+_student.html.erb
+_student.json.jbuilder
+```
 
 ## Server Startup
 
-Luckily, the process of starting the Rails server is as simple as our previous work, done via the following command:
+Luckily, the process of starting the Rails server is as simple as our previous work, and is completed via the following command:
 
-    `rails server -b 0.0.0.0`
+`rails server -b 0.0.0.0`
 
 The token `server` tells Rails we are executing a command related to the server. And the section `-b 0.0.0.0` assigns the server the IP 0.0.0.0. This means that the server should be accessible from your machine at the web address `localhost:####`, where #### is the port assigned to the docker container the rails server is running.
 
 
 ## Use
 
-Finally, go to `localhost:####`, again where #### is the assigned port, in your browser of choice. There you should find the default Rails landing page. Now, go to `localhost:####/students`. This should take you to a mostly blank page, with a button to go to a different page to create a new student. When you click on that link, you should be taken to `localhost:####/students/new`, and be presented with text boxes for your first and last name, your school email address, your Major, and your graduation date. Below these should be a button to create a student, and a link to return to the list of existing students.
+Finally, go to `localhost:####`, again where #### is the assigned port, in your browser of choice. There you should find the default Rails landing page, which you should be familiar with. Now, go to `localhost:####/students`. This should take you to a mostly blank page, with a button to go to a different page to create a new student. When you click on that link, you should be taken to `localhost:####/students/new`, and be presented with text boxes for your first and last name, your school email address, your Major, and your graduation date. Below these should be a button to create the new student, and a link to return to the list of existing students.
 
-If you successfully create a student, you should be presented with a page that displays the information you entered, and the options to modify or destroy the student, and the option to return to the list of all students. The latter of which should only contain the student you just created.
+If you successfully create a student, you should be presented with a page that displays the information you entered, the options to modify or destroy the student, and the option to return to the list of all students. The latter of which should only contain the student you just created.
 
-TODO: Recreate container in order to get accurate screenshots of what the user should be seeing for each of the addresses and steps of user creation. 
+TODO: Recreate container to get accurate screenshots of what the user should be seeing for each of the addresses and steps of user creation.
