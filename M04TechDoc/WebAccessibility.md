@@ -5,6 +5,11 @@ This document will attempt to convey a baseline knowledge of what web accessibil
 1. What is it?
     - Main Categories to Consider
 2. Ways to Support Each Type
+   - Visual
+   - Motor/Mobility
+   - Auditory
+   - Seizures
+   - Cognitive and Intellectual
 3. Useful Tools
 
 ## What is it?
