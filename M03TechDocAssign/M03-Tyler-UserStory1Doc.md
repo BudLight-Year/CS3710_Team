@@ -114,3 +114,5 @@ Finally, go to `localhost:####`, again where #### is the assigned port, in your 
 If you successfully create a student, you should be presented with a page that displays the information you entered, the options to modify or destroy the student, and the option to return to the list of all students. The latter of which should only contain the student you just created.
 
 TODO: Recreate container to get accurate screenshots of what the user should be seeing for each of the addresses and steps of user creation.
+
+Written by Tyler Andreasen/CanaDev
