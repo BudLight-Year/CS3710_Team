@@ -59,6 +59,32 @@ The WCAG (Web Content Accessiblity Guidlines) put it better than I could:
 - Guideline 3.2 Predictable: Make Web pages appear and operate in predictable ways.
 - Guideline 3.3 Input Assistance: Help users avoid and correct mistakes.
 
+## Automated Accessibility Testing in Rails
+Within Ruby on Rails there is a tool that is the defacto standard used for accessibility testing, and that tool is called **Axe.** Axe has a set of core gems used to interface with other testing
+tools like RSpec and Capybara. For example, the `axe-core-rspec` gem allows a developer to use Axe by defining RSpec descriptions and then having all of the complience testing be outsourced to Axe. Below is an example pulled from a blog post on fastruby.io (linked below).
+
+```ruby
+# spec/features/home_page_spec.rb
+require "rails_helper"
+
+RSpec.describe "HomePage", js: true do
+  context "when accessing home page" do
+    it 'has no accessibility violations' do
+      visit "/"
+
+      expect(page).to be_axe_clean
+    end
+  end
+end
+```
+
+It is super simple to implement, as all you really have to is add another context to an RSpec description and just add `expect(page).to be_axe_clean` and this one line will run all the tests needed to determine if your page is accessible or not.
+
+### Useful Resources for Implementing Accessibility Testing in Rails
+- [From Code to Compliance: Accessibliity Testing in Rails Applications](https://www.fastruby.io/blog/testing-for-accessibility.html) -> Simplest resource
+- [Automated accessibility testing in Rails with RSpec and aXe.](https://dev.to/chrislewis60/introducing-automated-accessibility-testing-in-rails-apps-with-rspec-and-axe-4hch) -> more in depth 
+- [automated_accessibility_testing_with_ruby_on_rails (github)](https://github.com/KevinBongart/automated_accessibility_testing_with_ruby_on_rails) -> sample app that implements the tests
+
 ## Useful Tools
 - each browser has accessibility tools in their respective developer consoles. Use them to gauge how accessible your site is
 - [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)
